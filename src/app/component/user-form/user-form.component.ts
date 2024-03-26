@@ -3,6 +3,8 @@ import { Component, inject} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule} from '@angular/forms';
 import { DummyApiService } from '../../services/dummy-api.service';
 import { IUser } from '../../models/interfaces';
+import { encrypt } from '../../util/util.encrypt';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +17,7 @@ import { IUser } from '../../models/interfaces';
 export class UserFormComponent {
   datosUsuario: FormGroup;
 
-  constructor (private formbuilder: FormBuilder){
+  constructor (private router: Router,private formbuilder: FormBuilder){
     this.datosUsuario = this.formbuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
@@ -54,14 +56,31 @@ export class UserFormComponent {
 
   }
 
-  
+  redirect(){
+    this.router.navigateByUrl('')
+  }
 
   addUser(){
     const data: IUser = {
       firstName: this.datosUsuario.get('firstName')?.value,
       lastName: this.datosUsuario.get('lastName')?.value,
       email: this.datosUsuario.get('email')?.value,
-      password: this.datosUsuario.get('password')?.value
+      password: encrypt(this.datosUsuario.get('password')?.value)
+    }
+
+    if(data.firstName === undefined || data.lastName === undefined || data.email === undefined || data.password === undefined){
+      console.log('Error');
+    } else {
+      this._servicio.addUser(data)
+      .subscribe(
+        response =>{
+          console.log('Registro exitoso');
+          this.redirect()
+        },
+        error =>{
+          console.log('Error en Registro');
+        }
+      )
     }
   }
 
