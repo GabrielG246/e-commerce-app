@@ -1,0 +1,115 @@
+<form class="container mt-5 p-5 bg-light d-flex justify-content-center" [formGroup]="datosUsuario" (ngSubmit)="addUser()">
+
+    <div class="row col-10">
+
+
+        <!--=== CAMPO NOMBRE ===-->
+        <div class="mb-3 col-12 col-md-6">
+            <label for="name" class="form-label"
+            >Ingresar Nombre</label>
+            <input type="text" class="form-control" id="name" formControlName="firstName"
+            [ngClass]="{
+                'is-invalid': hasErrors('firstName','required') || hasErrors('firstName', 'minlength'),
+                'is-valid': dontHasErrors('firstName','required') && dontHasErrors('firstName', 'minlength')
+            }"
+            >
+            <div style="height: 20px;">
+                @if (hasErrors('firstName', 'required')){
+                    <p class="text-danger">Este campo es requerido.</p>
+                } @else if (hasErrors('firstName', 'minlength')) {
+                    <p class="text-danger">El nombre es demasiado corto.</p>
+                }
+            </div>
+        </div>
+    
+
+        <!--=== CAMPO APELLIDO ===-->
+        <div class="mb-3 col-12 col-md-6">
+            <label for="lastName" class="form-label">Ingresar Apellido</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName"
+            [ngClass]="{
+                'is-invalid': hasErrors('lastName','required') || hasErrors('lastName', 'minlength'),
+                'is-valid': dontHasErrors('lastName','required') && dontHasErrors('lastName', 'minlength')
+            }"
+            >
+            <div style="height: 20px;">
+                @if (hasErrors('lastName', 'required')){
+                    <p class="text-danger">Este campo es requerido.</p>
+                } @else if (hasErrors('lastName', 'minlength')) {
+                    <p class="text-danger">El apellido es demasiado corto.</p>
+                }
+            </div>
+        </div>
+    
+
+        <!--=== CAMPO EMAIL ===-->
+        <div class="mb-3">
+            <label for="email" class="form-label">Ingresar Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email"
+            [ngClass]="{
+                'is-invalid': hasErrors('email','required') || hasErrors('email', 'email'),
+                'is-valid': dontHasErrors('email','required') && dontHasErrors('email', 'email')
+            }"
+            >
+            <div style="height: 20px;">
+                @if (hasErrors('email', 'required')){
+                    <p class="text-danger">Este campo es requerido.</p>
+                } @else if (hasErrors('email', 'email')) {
+                    <p class="text-danger">El email ingresado es no es válido.</p>
+                }
+            </div>
+        </div>
+    
+
+        <!--=== CAMPO CONTRASEÑA ===-->
+        <div class="mb-3">
+            <label for="password" class="form-label">Ingresar Contaseña</label>
+            <input type="password" class="form-control" id="password" formControlName="password"
+            [ngClass]="{
+                'is-invalid': hasErrors('password','required') || hasErrors('password', 'minlength'),
+                'is-valid': dontHasErrors('password','required') && dontHasErrors('password', 'minlength')
+            }"
+            >
+            <div style="height: 20px;">
+                @if (hasErrors('password', 'required')){
+                    <p class="text-danger">Este campo es requerido.</p>
+                } @else if (hasErrors('password', 'minlength')) {
+                    <p class="text-danger">El nombre es demasiado corto.</p>
+                }
+            </div>
+        </div>
+    
+        
+        <!--=== CAMPO CONFIRMAR CONTRASEÑA ===-->
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Repetir Contaseña</label>
+            <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+            [ngClass]="{
+                'is-invalid': hasErrors('confirmPassword','isRequired') || hasErrors('confirmPassword', 'mismatch'),
+                'is-valid': dontHasErrors('confirmPassword','isRequired') && dontHasErrors('confirmPassword', 'mismatch')
+            }"
+            >
+            <div style="height: 20px;">
+                @if (hasErrors('confirmPassword', 'isRequired')){
+                    <p class="text-danger">Este campo es requerido.</p>
+                } @else if (hasErrors('confirmPassword', 'mismatch')) {
+                    <p class="text-danger">Las contraseñas no son iguales.</p>
+                }
+            </div>
+        </div>
+
+        <!--=== BOTÓN ENVIAR ===-->
+        <div class="col-md-6 col-12 d-flex justify-content-start">
+            <button class="btn btn-success col-md-6 col-12" (click)="addUser()">Registrarme</button>
+        </div>
+
+        <!--=== BOTÓN REGRESAR ===-->
+        <div class="col-md-6 col-12 d-flex justify-content-end">
+            <button class="btn btn-light col-md-6 col-12 mt-4 mt-md-0 routerLink='/'">
+                <i class="bi bi-arrow-left m-0 p-0 fs-5 me-1"></i>Volver
+            </button>
+        </div>
+
+    </div>
+
+</form>

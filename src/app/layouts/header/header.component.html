@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-md bgc-primary">
+
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center col-2 col-md-1  mh-100">
+            <a class="navbar-brand d-flex justify-content-center p-0 m-0 col-6 col-md-8 col-lg-6">
+                <img src="../../../assets/icon_3.png" alt="icon" class="img-fluid m-0 p-0">
+            </a>
+        </div>
+
+
+
+        <button class="navbar-toggler navbar-light-toggler-border-color" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse mt-4 mt-md-0" id="navbarSupportedContent">
+
+            <ul class="navbar-nav me-auto mb-2 mt-4 mb-md-0 mt-md-0  mb-lg-0">
+
+                <li class="nav-item mx-1 mx-lg-3">
+                    <a class="nav-link text-light fs-5 fs-lg-4" href="#">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item mx-1 mx-lg-3">
+                    <a class="nav-link text-light fs-5 fs-lg-4" href="#">
+                        Link
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown mx-1 mx-lg-3">
+
+                    <a class="nav-link dropdown-toggle text-light fs-5 fs-lg-4" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Dropdown
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+
+                    </ul>
+
+                </li>
+
+
+            </ul>
+
+
+            <form class="d-flex me-4" role="search">
+                <input class="form-control mr-0 rounded-0 rounded-start border-1 border-end-0 border-light fs-4"
+                    type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-light ml-0 rounded-0 rounded-end" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+
+            <div class="profile-options">
+                @if (userIsLogged) {
+
+                <div class="profile-button">
+                    <a routerLink="/profile/?userId">
+                        <i class="bi bi-person-circle fs-1 text-light"></i>
+                    </a>
+                </div>
+                <div class="cart-button d-flex align-items-center">
+                    <a routerLink="/buycart/?cartId">
+                        <i class="bi bi-cart fs-2 text-light"></i>
+                    </a>
+                </div>
+
+                } @else {
+                <a routerLink="/login-usuario" class="custom__buttons fs-5 m-0 px-1 py-2">Ingresar</a>
+                <a routerLink="/registro-usuario" class="custom__buttons fs-5 m-0 px-1 py-2">Registrarse</a>
+                }
+            </div>
+
+
+
+        </div>
+    </div>
+</nav>

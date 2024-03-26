@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    --pr-color: #42a5f5;
+    --pr-color-dark: #2287d9;
+    --se-color: #fafafa;
+    
+}
+
+
+.bgc-primary{
+    background-color: var(--pr-color);
+}
+
+.bgc-secondary{
+    background-color: var(--se-color);
+}
+
+.txt-col-primary{
+    color: var(--pr-color);
+}
+
+.txt-col-secondary{
+    color: var(--se-color);
+}
