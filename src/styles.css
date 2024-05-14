@@ -3,7 +3,7 @@
     --pr-color: #42a5f5;
     --pr-color-dark: #2287d9;
     --se-color: #fafafa;
-    
+    --tr-dark: rgba(61, 61, 61, 0.521);
 }
 
 
@@ -22,3 +22,18 @@
 .txt-col-secondary{
     color: var(--se-color);
 }
+
+/*BORDES CUSTOMIZADOS*/
+.bor{
+    border: solid 1px;
+}
+
+.bor-primary{
+    border-color: var(--pr-color);
+}
+
+.bor-primary-dark{
+    border-color: var(--pr-color-dark);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

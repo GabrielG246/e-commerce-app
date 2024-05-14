@@ -1,4 +1,4 @@
 export const environment = {
     encrypt: true,
-    keyEncrypt: 'password@asde'
+    keyencrypt: 'secret key'
 };

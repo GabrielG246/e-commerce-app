@@ -1,1 +1,43 @@
-<p>user-login works!</p>
+<div class="container mt-5 p-3 pt-5 d-flex justify-content-center">
+
+    <form class="container col-12 col-md-10 col-lg-6 bgc-primary p-5 bor bor-primary-dark" [formGroup]="userLogin" (ngSubmit)="loginUser()">
+        <!--=== CAMPO username ===-->
+        <div class="mb-3">
+            <label for="username" class="form-label">Ingresar username</label>
+            <input type="text" class="form-control" id="username" formControlName="username" [ngClass]="{
+                        'is-invalid': hasErrors('username','required') || hasErrors('username', 'minlength'),
+                        'is-valid': dontHasErrors('username','required') && dontHasErrors('username', 'minlength')
+                    }">
+            <div style="height: 20px;">
+                @if (hasErrors('username', 'required')){
+                <p class="text-danger">Este campo es requerido.</p>
+                } @else if (hasErrors('username', 'minlength')) {
+                <p class="text-danger">El username ingresado es no es válido.</p>
+                }
+            </div>
+        </div>
+    
+    
+        <!--=== CAMPO CONTRASEÑA ===-->
+        <div class="mb-3">
+            <label for="password" class="form-label">Ingresar Contaseña</label>
+            <input type="password" class="form-control" id="password" formControlName="password" [ngClass]="{
+                        'is-invalid': hasErrors('password','required') || hasErrors('password', 'minlength')
+                    }">
+            <div style="height: 20px;">
+                @if (hasErrors('password', 'required')){
+                <p class="text-danger">Este campo es requerido.</p>
+                } @else if (hasErrors('password', 'minlength')) {
+                <p class="text-danger">El nombre es demasiado corto.</p>
+                }
+            </div>
+        </div>
+    
+        <div>
+            <button type="submit" class="btn btn-success"
+            [ngClass]="{
+                'disabled': hasErrors('password','required') || hasErrors('password', 'minlength') || hasErrors('username','required') || hasErrors('username', 'minlength')
+            }">Aceptar</button>
+        </div>
+    </form>
+</div>

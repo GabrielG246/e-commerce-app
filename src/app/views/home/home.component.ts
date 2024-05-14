@@ -1,39 +1,16 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { DummyApiService } from '../../services/dummy-api.service';
-import { IProduct } from '../../models/interfaces';
+import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsComponent } from '../../component/products/products.component';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, ProductsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
-  productsList?: IProduct[]
-  dataIsLoaded: boolean = false
+export class HomeComponent{
 
-
-  constructor(){}
-
-  private _dummyDB = inject(DummyApiService);
-
-  ngOnInit(): void {
-    this._dummyDB.getAllProducts().subscribe({
-      next: (productos: IProduct[]) => {
-        this.productsList= productos
-      },
-      error: (error: any) =>{
-        console.log(error);
-      }
-    })
-    
-    this.dataIsLoaded=true
-  }
-
-  verDatos(): void{
-    console.log(this.productsList);
-  }
 } 
 

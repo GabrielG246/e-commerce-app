@@ -1,0 +1,14 @@
+<h1>Paginación</h1>
+<app-pagination [skipProducts]="skipProducts">
+
+@if(pages.length>=0){
+    <h2>Lol</h2>
+
+    <div class="">
+        <button (click)="previousPage()" btn btn-primary>Preious</button>
+        @for(page of pages; track $index ){
+            <button (click)="numPage($index+1)" btn btn-primary>$index+1</button>
+        }
+        <button (click)="nextPage()" btn btn-primary>Next</button>
+    </div>
+}

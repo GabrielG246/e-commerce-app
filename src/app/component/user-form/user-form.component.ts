@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   selector: 'app-user-form',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './user-form.component.html',
+  templateUrl: './user-form.component.html',  
   styleUrl: './user-form.component.css'
 })
 export class UserFormComponent {
@@ -37,7 +37,7 @@ export class UserFormComponent {
   }
 
   dontHasErrors(controlName: string, errorType: string){
-    return !this.datosUsuario.get(controlName)?.hasError(errorType) && this.datosUsuario.get(controlName)?.touched
+    return !(this.datosUsuario.get(controlName)?.hasError(errorType)) && this.datosUsuario.get(controlName)?.touched
   }
 
   passwordMatchValidator(formGroup: FormGroup){
@@ -60,7 +60,7 @@ export class UserFormComponent {
     this.router.navigateByUrl('')
   }
 
-  addUser(){
+  addUser():any{
     const data: IUser = {
       firstName: this.datosUsuario.get('firstName')?.value,
       lastName: this.datosUsuario.get('lastName')?.value,
@@ -71,15 +71,16 @@ export class UserFormComponent {
     if(data.firstName === undefined || data.lastName === undefined || data.email === undefined || data.password === undefined){
       console.log('Error');
     } else {
-      this._servicio.addUser(data)
-      .subscribe(
-        response =>{
+      return this._servicio.addUser(data)
+      .subscribe({
+        next: ()=>{
           console.log('Registro exitoso');
           this.redirect()
         },
-        error =>{
-          console.log('Error en Registro');
+        error: (err)=>{
+          console.log(err);
         }
+      }
       )
     }
   }
