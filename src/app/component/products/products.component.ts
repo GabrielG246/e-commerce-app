@@ -14,13 +14,14 @@ export class ProductsComponent implements OnInit{
   currentPage: number= 1;
   skipProducts: number= 0;
   totalPages: number= 0;
-  pages: number[]= [1,2,3,4,5]
+  pages: number[]= []
 
   constructor(){}
 
   private _dummyJson= inject(DummyApiService);
 
   ngOnInit(): void {
+    //Obtener Cantidad de Páginas
     this._dummyJson.getLengthProducts().subscribe({
       next: (product: any)=>{
         this.totalPages= product.total / 20;
@@ -34,6 +35,7 @@ export class ProductsComponent implements OnInit{
     })
   }
 
+  //Métodos
   nextPage(){
     if (this.currentPage < this.totalPages){
       this.skipProducts+= 20
@@ -52,4 +54,6 @@ export class ProductsComponent implements OnInit{
     this.skipProducts= (num-1)*20
     this.currentPage= num
   }
+
+
 }

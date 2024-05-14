@@ -1,4 +1,4 @@
-<!--<div class="container-fluid d-flex justify-content-center my-5">
+<div class="container-fluid d-flex justify-content-center my-5">
     <div class="container">
         <div class="row d-flex justify-content-center">
             @if (dataIsLoaded === true) {
@@ -6,7 +6,7 @@
             @for (product of productsList; track $index) {
             <div class="col-12 col-md-4 col-lg-3 mt-4">
                 <div class="card custom-card border">
-                    <img src={{product.image}} class="card-img-top custom-card-image py-2">
+                    <img src={{product.thumbnail}} class="card-img-top custom-card-image p-2">
                     <div class="card-body">
                         <h5 class="card-title custom-card-title">{{product.title}}</h5>
                         <div>
@@ -22,5 +22,4 @@
             }
         </div>
     </div>
-</div> -->
-<h1>Page: {{skip}}</h1>
+</div>

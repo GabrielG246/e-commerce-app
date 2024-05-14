@@ -4,7 +4,7 @@ export interface IProduct {
     price:       number;
     description: string;
     category:    string;
-    image:       string;
+    thumbnail:   string;
     rating:      Rating;
 }
 
@@ -23,4 +23,11 @@ export interface IUser {
 export interface ILogin {
     username: string;
     password: string;
+}
+
+export interface IData {
+    products: IProduct[];
+    total: number;
+    skip: number;
+    limit: number;
 }

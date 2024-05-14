@@ -1,14 +1,15 @@
 <h1>Paginación</h1>
-<app-pagination [skipProducts]="skipProducts">
+<app-pagination [skipProducts]="skipProducts"></app-pagination>
 
-@if(pages.length>=0){
-    <h2>Lol</h2>
-
+@if (pages.length>=0){
     <div class="">
-        <button (click)="previousPage()" btn btn-primary>Preious</button>
-        @for(page of pages; track $index ){
-            <button (click)="numPage($index+1)" btn btn-primary>$index+1</button>
+        <button (click)="previousPage()" class="btn btn-light">⇦</button>
+        @for(page of pages; track $index){
+            <button (click)="numPage(page)" class="btn btn-light">{{page}}</button>
         }
-        <button (click)="nextPage()" btn btn-primary>Next</button>
+        @empty{
+            <button class="btn btn-light diseabled">0</button>
+        }
+        <button (click)="nextPage()" class="btn btn-light">Next</button>
     </div>
 }

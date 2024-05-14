@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
-import { IProduct } from '../../models/interfaces';
+import { IData, IProduct } from '../../models/interfaces';
 import { DummyApiService } from '../../services/dummy-api.service';
 
 @Component({
@@ -10,33 +10,31 @@ import { DummyApiService } from '../../services/dummy-api.service';
   styleUrl: './pagination.component.css'
 })
 export class PaginationComponent implements OnChanges{
-  productsList?: IProduct[];
+  productsList?: IProduct[]
   dataIsLoaded: boolean = false;
-  skip: any= 0;
+  skip: number= 0;
 
 
   //Número de Página
-  @Input() skipProducts: number = 1
+  @Input() skipProducts: number= 0
 
   constructor(){}
 
   private _dummyDB= inject(DummyApiService)
 
-  //Ciclo onChange 
-  ngOnChanges(change: SimpleChanges): void {
-    if (change['skipProducts']){
-      const skipNumber= change['skipProducts'].currentValue
-      this.skip= skipNumber;
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['skipProducts']){
+      this.skip= changes['skipProducts'].currentValue;
+
+      this._dummyDB.getLimitedProducts(this.skip).subscribe({
+        next: (productos: IData) => {
+          this.productsList= productos.products
+          this.dataIsLoaded= true
+        },
+        error: (error: any) =>{
+          console.log(error.message);
+        }
+      })
     }
-    
-    /*this._dummyDB.getLimitedProducts(this.pageSkip || 0).subscribe({
-      next: (productos: IProduct[]) => {
-        this.productsList= productos
-        this.dataIsLoaded= true
-      },
-      error: (error: any) =>{
-        console.log(error);
-      }
-    })*/
   }
 }

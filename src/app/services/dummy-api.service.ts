@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IProduct, IUser, ILogin } from '../models/interfaces';
+import { IProduct, IUser, ILogin, IData } from '../models/interfaces';
 
 
 @Injectable({ 
@@ -18,8 +18,8 @@ export class DummyApiService {
     return this.http.get<number>(`${this.dummyUrl}products`)
   }
 
-  getLimitedProducts(skip: number): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(`${this.dummyUrl}products?limit=20&skip=${skip}`)
+  getLimitedProducts(skip: number): Observable<IData> {
+    return this.http.get<IData>(`${this.dummyUrl}products?limit=20&skip=${skip}`)
   }
 
   addUser(userData: IUser): Observable<any> {
