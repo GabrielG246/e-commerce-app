@@ -35,5 +35,11 @@
 .bor-primary-dark{
     border-color: var(--pr-color-dark);
 }
+
+/*Tamaño de Tarjeta*/
+.img-card-h{
+    height: 300px;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
