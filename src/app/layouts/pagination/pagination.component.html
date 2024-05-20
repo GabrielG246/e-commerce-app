@@ -5,10 +5,10 @@
 
             @for (product of productsList; track $index) {
             <div class="col-12 col-md-4 col-lg-3 mt-4">
-                <div class="card custom-card border">
-                    <img src={{product.thumbnail}} class="card-img-top custom-card-image p-2 img-card-h">
+                <div class="card border">
+                    <img src={{product.thumbnail}} class="card-img-top p-2 c-card-img">
                     <div class="card-body">
-                        <h5 class="card-title custom-card-title">{{product.title}}</h5>
+                        <h5 class="card-title c-card-title my-3"> {{product.title}} </h5>
                         <div>
                             <h3 class="card-title">${{product.price}}</h3>
                             <a href="#" class="btn btn-success">Comprar</a>
@@ -18,7 +18,9 @@
             </div>
             }
             } @else {
-            <h2>Data is loading</h2>
+                <div class="spinner-border d-flex jcc" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             }
         </div>
     </div>

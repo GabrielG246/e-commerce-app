@@ -1,9 +1,8 @@
-<h1>Paginación</h1>
 <app-pagination [skipProducts]="skipProducts"></app-pagination>
 
 @if (pages.length>=0){
-    <div class="">
-        <button (click)="previousPage()" class="btn btn-light">⇦</button>
+    <div class="container-fluid d-flex jcc mb-5">
+        <button (click)="previousPage()" class="btn btn-light">Previous</button>
         @for(page of pages; track $index){
             <button (click)="numPage(page)" class="btn btn-light">{{page}}</button>
         }

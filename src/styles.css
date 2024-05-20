@@ -36,10 +36,22 @@
     border-color: var(--pr-color-dark);
 }
 
-/*Tamaño de Tarjeta*/
-.img-card-h{
-    height: 300px;
+/*Componente Card*/
+.c-card-img{
+    width: 100%;
+    height: 18rem;
+}
+
+.c-card-title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*Display Flex*/
+.jcc{
+    justify-content: center;
+}
