@@ -22,6 +22,10 @@ export class DummyApiService {
     return this.http.get<IData>(`${this.dummyUrl}products?limit=20&skip=${skip}`)
   }
 
+  getProduct(id: number): Observable<IProduct>{
+    return this.http.get<IProduct>(`${this.dummyUrl}products/${id || undefined}`)
+  }
+
   addUser(userData: IUser): Observable<any> {
     return this.http.post(`${this.dummyUrl}users/add`, JSON.stringify(userData))
   }

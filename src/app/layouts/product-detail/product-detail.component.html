@@ -1,0 +1,36 @@
+<div class="d-flex mt-5 bg-danger container">
+    <article class="col-6">
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade container ">
+            <div class="carousel-indicators">
+                @if(dataLoaded){
+                    @for(image of productData.images; track $index){
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="($index)" aria-current="true" aria-label="'Slide' + ($index+1)" [ngClass]="{'active': isActived($index)}"></button>
+                    }
+                }
+            </div>
+            <div class="carousel-inner col-8">
+                @if(dataLoaded){
+                    @for(image of productData.images; track $index){         
+                        <div class="carousel-item w-100 h-100" [ngClass]="{'active': isActived($index)}">
+                            <img src="{{image}}" class="d-block w-100 of-fi" alt="...">
+                        </div>
+                    }
+                }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" (click)="prevImage()"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-danger" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" (click)="nextImage()"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-danger" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </article>
+
+    <aside>
+        <h2>{{productData.title}}</h2>
+    </aside>
+</div>

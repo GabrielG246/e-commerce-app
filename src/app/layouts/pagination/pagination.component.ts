@@ -1,11 +1,12 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import { IData, IProduct } from '../../models/interfaces';
 import { DummyApiService } from '../../services/dummy-api.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pagination',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css'
 })
