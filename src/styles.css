@@ -3,6 +3,7 @@
     --pr-color: #42a5f5;
     --pr-color-dark: #2287d9;
     --se-color: #fafafa;
+    --se-color-d: #d9d9d9;
     --tr-dark: rgba(61, 61, 61, 0.521);
 }
 
@@ -13,6 +14,10 @@
 
 .bgc-secondary{
     background-color: var(--se-color);
+}
+
+.bgc-secondary-d{
+    background-color: var(--se-color-d);
 }
 
 .txt-col-primary{
@@ -57,8 +62,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 /*Images*/
-.of-fi{
-    object-fit: contain;
-}
+
 
 /*Carrousel*/

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ElementRef, Renderer2, AfterViewInit, HostListener } from '@angular/core';
 import { IProduct } from '../../models/interfaces';
 import { DummyApiService } from '../../services/dummy-api.service';
 import { ActivatedRoute } from '@angular/router';
@@ -27,7 +27,7 @@ export class ProductDetailComponent implements OnInit {
   activeIndex: number= 0;
 
 
-  constructor(private route: ActivatedRoute){}
+  constructor(private route: ActivatedRoute, private elRef: ElementRef){}
 
   private _DummyDB= inject(DummyApiService)
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   nextImage(){
-    this.activeIndex < this.productData.images.length ? this.activeIndex++ : this.activeIndex = 0;
+    this.activeIndex < this.productData.images.length-1 ? this.activeIndex++ : this.activeIndex = 0;
   }
 
   prevImage(){
@@ -59,3 +59,4 @@ export class ProductDetailComponent implements OnInit {
   }
 
 }
+
