@@ -6,12 +6,18 @@ export interface IProduct {
     category:    string;
     thumbnail:   string;
     images:      string[];
-    rating:      Rating;
+    rating:      number;
+    stock:       number;
+    brand:       string;
+    reviews:     IReviews[];
 }
 
-export interface Rating {
-    rate:  number;
-    count: number;
+export interface IReviews {
+    rating:     number;
+    comment:    string;
+    date:       string;
+    reviewerName:   string;
+    reviewerEmail?:  string;
 }
 
 export interface IUser {

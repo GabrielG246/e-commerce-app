@@ -3,11 +3,12 @@ import { IProduct } from '../../models/interfaces';
 import { DummyApiService } from '../../services/dummy-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgClass } from '@angular/common';
+import { ProductRateComponent } from '../product-rate/product-rate.component';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, ProductRateComponent],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
@@ -21,7 +22,10 @@ export class ProductDetailComponent implements OnInit {
     category: '',
     thumbnail: '',
     images: [''],
-    rating: {rate: 0, count: 0},
+    rating: 0,
+    stock: 0,
+    brand: '',
+    reviews: [{rating:0,comment:'',date:'',reviewerName:''}]
   }
   dataLoaded= false;
   activeIndex: number= 0;

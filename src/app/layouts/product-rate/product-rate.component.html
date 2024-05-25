@@ -1,0 +1,9 @@
+@for (rate of arrayRate; track $index) {
+    @if (rate === 1) {
+        <i class="bi bi-star-fill"></i>
+    } @else if (rate=== 0.5) {
+        <i class="bi bi-star-half"></i>
+    } @else if (rate===0) {
+        <i class="bi bi-star"></i>
+    }
+}
